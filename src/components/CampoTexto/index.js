@@ -1,11 +1,21 @@
 import "./CampoTexto.css";
 
 const CampoTexto = (props) => {
-  console.log(props);
+  let valor = "a";
+  const handleChange = (e) => {
+    valor = e.target.value;
+    console.log(valor);
+  };
+
   return (
     <div className="campo-texto">
       <label>{props.label}</label>
-      <input placeholder={props.placeholder} required={props.required} />
+      <input
+        onChange={handleChange}
+        placeholder={props.placeholder}
+        required={props.required}
+        value={valor}
+      />
     </div>
   );
 };
