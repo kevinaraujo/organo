@@ -1,10 +1,8 @@
 import "./CampoTexto.css";
 
 const CampoTexto = (props) => {
-  let valor = "a";
   const handleChange = (e) => {
-    valor = e.target.value;
-    console.log(valor);
+    props.setValue(e.target.value);
   };
 
   return (
@@ -14,7 +12,7 @@ const CampoTexto = (props) => {
         onChange={handleChange}
         placeholder={props.placeholder}
         required={props.required}
-        value={valor}
+        value={props.value}
       />
     </div>
   );
