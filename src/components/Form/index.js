@@ -5,15 +5,6 @@ import Botao from "../Botao";
 import { useState } from "react";
 
 export const Form = (props) => {
-  const teams = [
-    "Programação",
-    "Front-end",
-    "Data Science",
-    "Devops",
-    "UX e Design",
-    "Inovação e Gestão",
-  ];
-
   const handleSave = (event) => {
     event.preventDefault();
     props.onNewColaborator({
@@ -56,7 +47,7 @@ export const Form = (props) => {
         />
         <ListaSuspensa
           label="Time"
-          itens={teams}
+          itens={props.teams}
           required={true}
           value={team}
           setValue={setTeam}

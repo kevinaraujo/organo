@@ -35,13 +35,19 @@ function App() {
   return (
     <div>
       <Banner />
-      <Form onNewColaborator={addColaborator} />
+      <Form
+        teams={teams.map((team) => team.name)}
+        onNewColaborator={addColaborator}
+      />
       {teams.map((team) => (
         <Team
           key={team.name}
           name={team.name}
           primaryColor={team.primaryColor}
           secondaryColor={team.secondaryColor}
+          colaborators={colaborators.filter(
+            (colaborator) => colaborator.team == team.name
+          )}
         />
       ))}
     </div>
