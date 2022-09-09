@@ -13,6 +13,11 @@ export const Form = (props) => {
       image,
       team,
     });
+
+    setName("");
+    setRole("");
+    setImage("");
+    setTeam("");
   };
 
   const [name, setName] = useState("");
