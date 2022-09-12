@@ -25,13 +25,9 @@ function App() {
   const [colaborators, setColaborators] = useState([]);
 
   const addColaborator = (colaborator) => {
-    console.log(colaborator);
     setColaborators([...colaborators, colaborator]);
   };
 
-  useEffect(() => {
-    console.log("novo", colaborators);
-  }, [colaborators]);
   return (
     <div>
       <Banner />

@@ -9,7 +9,11 @@ const Team = (props) => {
       <h3 style={{ borderColor: props.primaryColor }}>{props.name}</h3>
       <div className="colaborators">
         {props.colaborators.map((colaborator) => (
-          <Colaborator {...colaborator} />
+          <Colaborator
+            backgroundColor={props.primaryColor}
+            key={colaborator.name}
+            {...colaborator}
+          />
         ))}
       </div>
     </section>
