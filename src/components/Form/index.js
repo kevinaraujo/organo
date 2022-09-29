@@ -2,10 +2,13 @@ import "./Form.css";
 import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import Errors from "../Errors";
 
 export const Form = (props) => {
   const handleSave = (event) => {
+    setShowErrors(name.length === 0);
+
     event.preventDefault();
     props.onNewColaborator({
       name,
@@ -24,6 +27,12 @@ export const Form = (props) => {
   const [role, setRole] = useState("");
   const [image, setImage] = useState("");
   const [team, setTeam] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
+
+  const memoizedErrors = useMemo(
+    () => <Errors showErrors={showErrors} />,
+    [showErrors]
+  );
 
   return (
     <section className="form">
@@ -32,32 +41,29 @@ export const Form = (props) => {
         <CampoTexto
           label="Name"
           placeholder="Type your name"
-          required={true}
           value={name}
           setValue={setName}
         />
         <CampoTexto
           label="Role"
           placeholder="Type your role"
-          required={true}
           value={role}
           setValue={setRole}
         />
         <CampoTexto
           label="Image"
           placeholder="Type the image path"
-          required={true}
           value={image}
           setValue={setImage}
         />
         <ListaSuspensa
           label="Time"
           itens={props.teams}
-          required={true}
           value={team}
           setValue={setTeam}
         />
         <Botao>Criar Card</Botao>
+        {memoizedErrors}
       </form>
     </section>
   );
